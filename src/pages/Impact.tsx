@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Zap, Users, BookOpen, Shield, Monitor, HelpCircle, ArrowRight, Sparkles, Star, CheckCircle } from "lucide-react";
+import { Zap, Users, BookOpen, Shield, Monitor, HelpCircle, ArrowRight, Sparkles, Star, CheckCircle, Heart, TrendingUp, ChevronDown, HandHeart, Calendar, Award, PawPrint, Home } from "lucide-react";
 import impactHeroImage from "@/assets/impact-hero.jpg";
 import impactEducationImage from "@/assets/impact-education.jpg";
 import impactCommunityImage from "@/assets/impact-community.jpg";
@@ -13,42 +13,47 @@ const Impact = () => {
     document.title = "Impact - La Herpaile";
   }, []);
   const impactHighlights = [
-    { text: "Providing students in remote areas access to essential software.", icon: Monitor },
-    { text: "Low-cost high-performance computing for NGOs and volunteers.", icon: Users },
-    { text: "Running digital training classes and online workshops.", icon: BookOpen }
+    { text: "Providing students in remote areas access to essential software.", icon: Monitor, gradient: "from-primary via-accent to-primary", bgGlow: "bg-primary/30" },
+    { text: "Low-cost high-performance computing for NGOs and volunteers.", icon: Users, gradient: "from-secondary via-forest to-secondary", bgGlow: "bg-secondary/30" },
+    { text: "Running digital training classes and online workshops.", icon: BookOpen, gradient: "from-golden via-accent to-golden", bgGlow: "bg-golden/30" }
   ];
 
   const educationUseCases = [
-    { text: "Virtual computer labs — multiple students, one machine.", icon: Monitor },
-    { text: "Online training for coding, design, and basic data skills.", icon: BookOpen },
-    { text: "Resource-sharing of expensive software licenses.", icon: Users }
+    { text: "Virtual computer labs — multiple students, one machine.", icon: Monitor, gradient: "from-secondary via-forest to-secondary", bgGlow: "bg-secondary/30" },
+    { text: "Online training for coding, design, and basic data skills.", icon: BookOpen, gradient: "from-primary via-accent to-primary", bgGlow: "bg-primary/30" },
+    { text: "Resource-sharing of expensive software licenses.", icon: Users, gradient: "from-golden via-accent to-golden", bgGlow: "bg-golden/30" }
   ];
 
   const faqItems = [
     {
       question: "What is RDP and why is it useful?",
       answer: "RDP allows remote access to a server's desktop, enabling users to run high-end software without expensive machines.",
-      icon: HelpCircle
+      icon: HelpCircle,
+      gradient: "from-primary via-accent to-primary"
     },
     {
       question: "Is it secure?",
       answer: "Yes, with proper configuration (encryption, strong passwords, MFA) RDP is secure. We also perform regular audits and updates.",
-      icon: Shield
+      icon: Shield,
+      gradient: "from-secondary via-forest to-secondary"
     },
     {
       question: "How much does it cost?",
       answer: "Costs depend on usage, user count, and server specs. We provide affordable NGO/community packages.",
-      icon: Zap
+      icon: Zap,
+      gradient: "from-golden via-accent to-golden"
     },
     {
       question: "Which devices can be used?",
       answer: "Laptops, desktops, tablets, and even low-cost thin clients.",
-      icon: Monitor
+      icon: Monitor,
+      gradient: "from-accent via-primary to-accent"
     },
     {
       question: "How do I get started?",
       answer: "A basic internet connection and a small pilot group — we handle the rest.",
-      icon: ArrowRight
+      icon: ArrowRight,
+      gradient: "from-primary via-golden to-primary"
     }
   ];
 
@@ -56,94 +61,127 @@ const Impact = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      {/* Hero Section - Full Screen like About Us */}
+      {/* Hero Section - Full Screen like Home Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
+        {/* Background Image with Parallax Effect */}
+        <div className="absolute inset-0 z-0">
           <img 
             src={impactHeroImage} 
             alt="Digital Impact"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-110 animate-[scale-in_1.5s_ease-out_forwards]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/80 to-foreground/70"></div>
+          {/* Multi-layer Gradient Overlay - Like Home Hero */}
+          <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/30 to-foreground/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-transparent to-accent/20" />
+          
+          {/* Animated Mesh Gradient */}
+          <div className="absolute inset-0 opacity-40">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-primary/40 via-transparent to-transparent animate-pulse" />
+            <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-accent/30 via-transparent to-transparent animate-pulse" style={{ animationDelay: "1.5s" }} />
+          </div>
+          
+          {/* Animated Glow Orbs - Like Home Hero */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary/30 to-accent/20 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-secondary/30 to-golden/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px] morph-shape" />
         </div>
 
-        {/* Animated Background Elements - Like Home ImpactStats */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[150px] animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/15 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: "1s" }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[200px]"></div>
-        </div>
+        {/* Floating Decorative Elements - Like Home Hero */}
+        <div className="absolute top-20 left-10 w-24 h-24 border-2 border-primary-foreground/20 rounded-full floating-slow backdrop-blur-sm" />
+        <div className="absolute top-32 right-16 w-16 h-16 bg-gradient-to-br from-golden/30 to-accent/20 rounded-full floating blur-sm" />
+        <div className="absolute bottom-32 left-16 w-12 h-12 bg-gradient-to-br from-primary/40 to-secondary/30 rounded-full floating-fast" />
+        <div className="absolute top-1/3 right-1/4 w-6 h-6 bg-golden/50 rounded-full floating animate-pulse" />
+        <div className="absolute bottom-1/4 left-1/3 w-4 h-4 bg-accent/40 rounded-full floating-slow" />
+        
+        {/* Floating Stars */}
+        <Star className="absolute top-1/4 right-[20%] w-6 h-6 text-golden/40 floating-slow animate-pulse" />
+        <Star className="absolute bottom-1/3 left-[15%] w-4 h-4 text-primary-foreground/30 floating" />
+        <Zap className="absolute top-[40%] left-[10%] w-5 h-5 text-accent/30 floating-fast" />
 
-        {/* Floating Stars - Like Home */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <Star className="absolute top-20 left-[10%] w-8 h-8 text-golden/30 floating-slow" />
-          <Star className="absolute top-1/3 right-[15%] w-6 h-6 text-primary/25 floating" />
-          <Sparkles className="absolute bottom-1/4 left-[20%] w-7 h-7 text-accent/30 floating-fast" />
-          <Star className="absolute top-1/2 right-[8%] w-5 h-5 text-golden/25 floating" />
-        </div>
+        {/* Content - Like Home Hero */}
+        <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground pt-32">
+          {/* Animated Badge */}
+          <div className="inline-flex items-center gap-3 px-8 py-3 rounded-full glass-card mb-8 animate-fade-up border border-primary-foreground/20 shadow-2xl">
+            <Sparkles className="w-5 h-5 text-golden animate-pulse" />
+            <span className="text-sm font-bold tracking-[0.2em] uppercase bg-gradient-to-r from-golden via-primary-foreground to-golden bg-clip-text text-transparent">
+              Transforming Lives Through Technology
+            </span>
+            <Sparkles className="w-5 h-5 text-golden animate-pulse" />
+          </div>
+          
+          <h1 
+            className="font-display text-5xl md:text-7xl lg:text-9xl font-black mb-8 animate-fade-up tracking-tight"
+            style={{ animationDelay: "0.1s" }}
+          >
+            <span className="block text-shadow-hero drop-shadow-2xl">OUR</span>
+            <span className="block bg-gradient-to-r from-golden via-accent to-primary bg-clip-text text-transparent animate-gradient-x drop-shadow-lg">
+              IMPACT
+            </span>
+          </h1>
+          
+          <p 
+            className="max-w-2xl mx-auto text-lg md:text-xl opacity-90 mb-12 font-light animate-fade-up leading-relaxed text-primary-foreground/90"
+            style={{ animationDelay: "0.2s" }}
+          >
+            Empowering communities with secure, cost-effective digital solutions that create lasting change and transform futures.
+          </p>
 
-        {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-gradient-to-r from-primary/20 via-accent/10 to-primary/20 text-primary-foreground text-sm font-bold mb-6 animate-fade-up border border-primary-foreground/20">
-              <Sparkles className="w-4 h-4 text-golden" />
-              <span className="tracking-widest uppercase">Transforming Lives Through Technology</span>
-              <Sparkles className="w-4 h-4 text-golden" />
-            </div>
-            
-            <h1 className="font-display text-5xl md:text-7xl font-black text-primary-foreground mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-              Our <span className="bg-gradient-to-r from-primary via-accent to-golden bg-clip-text text-transparent">Impact</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-up" style={{ animationDelay: "0.2s" }}>
-              Empowering communities with secure, cost-effective digital solutions that create lasting change.
-            </p>
-
-            {/* Stats - Like Home ImpactStats */}
-            <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-12 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-              {[
-                { number: "500+", label: "Students Empowered", gradient: "from-primary via-accent to-primary" },
-                { number: "50+", label: "NGOs Supported", gradient: "from-secondary via-forest to-secondary" },
-                { number: "100+", label: "Training Sessions", gradient: "from-golden via-accent to-golden" }
-              ].map((stat, index) => (
-                <div key={index} className="text-center group">
-                  <div className={`text-3xl md:text-4xl font-display font-black bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-2`}>{stat.number}</div>
-                  <div className="text-primary-foreground/70 text-sm">{stat.label}</div>
+          {/* Stats Preview - Like Home Hero */}
+          <div 
+            className="mt-16 grid grid-cols-3 gap-6 max-w-xl mx-auto animate-fade-up"
+            style={{ animationDelay: "0.5s" }}
+          >
+            {[
+              { number: "500+", label: "Students Empowered", icon: "🎓" },
+              { number: "50+", label: "NGOs Supported", icon: "🏢" },
+              { number: "100+", label: "Training Sessions", icon: "✨" },
+            ].map((stat) => (
+              <div 
+                key={stat.label} 
+                className="group text-center p-4 rounded-2xl glass-card hover:bg-primary-foreground/10 transition-all duration-500 cursor-pointer hover:scale-105 border border-primary-foreground/10"
+              >
+                <div className="text-2xl mb-2 group-hover:animate-bounce-soft">{stat.icon}</div>
+                <div className="font-display text-3xl md:text-4xl font-black bg-gradient-to-r from-golden to-accent bg-clip-text text-transparent">
+                  {stat.number}
                 </div>
-              ))}
-            </div>
+                <div className="text-xs uppercase tracking-widest opacity-80 mt-1 font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex items-start justify-center p-2">
-            <div className="w-1 h-3 bg-golden rounded-full animate-pulse"></div>
+        {/* Scroll Indicator - Like Home Hero */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3 animate-fade-up" style={{ animationDelay: "0.7s" }}>
+          <span className="text-primary-foreground/70 text-xs uppercase tracking-[0.3em] font-medium">Scroll</span>
+          <div className="w-10 h-16 border-2 border-primary-foreground/40 rounded-full flex justify-center pt-3 glass-card backdrop-blur-md">
+            <ChevronDown className="w-5 h-5 text-primary-foreground/80 scroll-indicator" />
           </div>
         </div>
       </section>
 
       {/* Transforming Lives Through Digital Access - Like Home ImpactStats section */}
       <section className="py-28 lg:py-40 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden">
-        {/* Animated Background - Like Home */}
+        {/* Animated Background - Like Home ImpactStats */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-aurora opacity-20" />
           <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] animate-pulse" />
           <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[200px]" />
         </div>
 
         {/* Floating Elements */}
         <Star className="absolute top-20 left-[10%] w-8 h-8 text-golden/20 floating-slow" />
-        <Zap className="absolute top-1/3 right-[8%] w-10 h-10 text-primary/15 floating" />
-        <Sparkles className="absolute bottom-1/4 left-[5%] w-6 h-6 text-accent/20 floating-fast" />
+        <TrendingUp className="absolute top-1/3 right-[8%] w-10 h-10 text-primary/15 floating" />
+        <Heart className="absolute bottom-1/4 left-[5%] w-6 h-6 text-accent/20 floating-fast" />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-gradient-to-r from-primary/20 via-accent/10 to-primary/20 text-primary text-sm font-bold mb-6 animate-fade-up border border-primary/20">
-              <Zap className="w-4 h-4" />
-              <span className="tracking-widest uppercase">Digital Transformation</span>
-              <Zap className="w-4 h-4" />
+              <TrendingUp className="w-4 h-4" />
+              <span className="tracking-widest uppercase">Our Impact</span>
+              <TrendingUp className="w-4 h-4" />
             </div>
             <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-8 animate-fade-up" style={{ animationDelay: "0.1s" }}>
               Transforming Lives Through
@@ -198,13 +236,16 @@ const Impact = () => {
                   className="group relative animate-fade-up"
                   style={{ animationDelay: `${0.3 + index * 0.1}s` }}
                 >
-                  <div className="absolute inset-0 bg-primary/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 scale-105" />
+                  {/* Glow Background */}
+                  <div className={`absolute inset-0 ${item.bgGlow} rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 scale-105`} />
                   
                   <div className="relative flex gap-6 p-6 rounded-2xl bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-xl border border-border/50 hover:border-primary/50 transition-all duration-500 cursor-pointer hover-lift overflow-hidden">
+                    {/* Shimmer Effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     
-                    <div className="relative flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-primary via-accent to-primary flex items-center justify-center shadow-xl group-hover:shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                    <div className={`relative flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center shadow-xl group-hover:shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
                       <item.icon className="w-8 h-8 text-primary-foreground" />
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
                     
                     <div className="flex-grow flex items-center">
@@ -218,9 +259,9 @@ const Impact = () => {
               
               <Link to="/contact-us">
                 <Button 
-                  variant="heroOutline" 
+                  variant="hero" 
                   size="lg"
-                  className="group/btn border-2 mt-6 bg-gradient-to-r from-primary to-accent text-primary-foreground hover:from-primary/90 hover:to-accent/90"
+                  className="group/btn mt-8 bg-gradient-to-r from-primary via-accent to-golden text-primary-foreground hover:from-primary/90 hover:to-accent/90 shadow-glow-md hover:shadow-glow-lg"
                 >
                   Discover More
                   <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-2 transition-transform duration-300" />
@@ -235,30 +276,32 @@ const Impact = () => {
       <section className="py-28 lg:py-40 bg-gradient-to-b from-muted/30 via-muted/50 to-muted/30 relative overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-secondary/15 to-forest/10 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-forest/15 to-secondary/10 rounded-full blur-[180px] animate-pulse" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-primary/15 to-accent/10 rounded-full blur-[150px] animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-secondary/15 to-forest/10 rounded-full blur-[180px] animate-pulse" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-golden/5 rounded-full blur-[100px]" />
         </div>
 
-        {/* Floating Elements */}
+        {/* Floating Decorative Elements */}
         <Star className="absolute top-20 left-[15%] w-8 h-8 text-golden/20 floating-slow" />
-        <BookOpen className="absolute top-1/3 right-[10%] w-6 h-6 text-secondary/20 floating" />
-        <Sparkles className="absolute bottom-1/4 left-[8%] w-7 h-7 text-forest/15 floating-fast" />
+        <Heart className="absolute top-1/3 right-[10%] w-6 h-6 text-primary/20 floating" />
+        <Sparkles className="absolute bottom-1/4 left-[8%] w-7 h-7 text-accent/15 floating-fast" />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-gradient-to-r from-secondary/20 via-forest/10 to-secondary/20 text-secondary text-sm font-bold mb-6 animate-fade-up border border-secondary/20">
-              <BookOpen className="w-4 h-4" />
-              <span className="tracking-widest uppercase">Education & Skills</span>
-              <BookOpen className="w-4 h-4" />
+              <Heart className="w-4 h-4" />
+              <span className="tracking-widest uppercase">Our Programs</span>
+              <Heart className="w-4 h-4" />
             </div>
             <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-8 animate-fade-up" style={{ animationDelay: "0.1s" }}>
               Education &{" "}
-              <span className="bg-gradient-to-r from-secondary via-forest to-secondary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary via-accent to-golden bg-clip-text text-transparent">
                 Skills Development
               </span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg md:text-xl animate-fade-up leading-relaxed" style={{ animationDelay: "0.2s" }}>
-              Our RDP solution allows schools and training centers to access modern tools without expensive hardware or software.
+              Through dedicated programs, skilled volunteers, and compassionate 
+              care, we transform lives one community at a time.
             </p>
           </div>
 
@@ -271,13 +314,16 @@ const Impact = () => {
                   className="group relative animate-fade-up"
                   style={{ animationDelay: `${0.3 + index * 0.1}s` }}
                 >
-                  <div className="absolute inset-0 bg-secondary/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 scale-105" />
+                  {/* Glow Background */}
+                  <div className={`absolute inset-0 ${item.bgGlow} rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 scale-105`} />
                   
                   <div className="relative flex gap-6 p-6 rounded-2xl bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-xl border border-border/50 hover:border-secondary/50 transition-all duration-500 cursor-pointer hover-lift overflow-hidden">
+                    {/* Shimmer Effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     
-                    <div className="relative flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary via-forest to-secondary flex items-center justify-center shadow-xl group-hover:shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                    <div className={`relative flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center shadow-xl group-hover:shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
                       <item.icon className="w-8 h-8 text-primary-foreground" />
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
                     
                     <div className="flex-grow flex items-center">
@@ -291,9 +337,9 @@ const Impact = () => {
               
               <Link to="/contact-us">
                 <Button 
-                  variant="heroOutline" 
+                  variant="hero" 
                   size="lg"
-                  className="group/btn border-2 mt-6 bg-gradient-to-r from-secondary to-forest text-primary-foreground hover:from-secondary/90 hover:to-forest/90"
+                  className="group/btn mt-8 bg-gradient-to-r from-secondary via-forest to-secondary text-primary-foreground hover:from-secondary/90 hover:to-forest/90 shadow-glow-md hover:shadow-glow-lg"
                 >
                   Book a Demo
                   <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-2 transition-transform duration-300" />
@@ -340,21 +386,21 @@ const Impact = () => {
       <section className="py-28 lg:py-40 bg-gradient-to-b from-background via-background to-muted/20 relative overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-golden/10 to-accent/5 rounded-full blur-[180px] -translate-x-1/2 animate-pulse" />
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-tl from-primary/10 to-golden/5 rounded-full blur-[150px] translate-x-1/3 animate-pulse" style={{ animationDelay: "1.5s" }} />
+          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-primary/10 to-accent/5 rounded-full blur-[180px] -translate-x-1/2 animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-tl from-secondary/10 to-golden/5 rounded-full blur-[150px] translate-x-1/3 animate-pulse" style={{ animationDelay: "1.5s" }} />
         </div>
 
         {/* Floating Elements */}
         <Sparkles className="absolute top-24 right-[12%] w-7 h-7 text-golden/25 floating-slow" />
         <Star className="absolute bottom-1/3 left-[8%] w-6 h-6 text-primary/20 floating" />
-        <HelpCircle className="absolute top-1/2 right-[5%] w-5 h-5 text-accent/25 floating-fast" />
+        <Heart className="absolute top-1/2 right-[5%] w-5 h-5 text-accent/25 floating-fast" />
 
         <div className="container mx-auto px-4 relative z-10 max-w-4xl">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-gradient-to-r from-golden/20 via-accent/10 to-golden/20 text-golden text-sm font-bold mb-6 animate-fade-up border border-golden/20">
-              <HelpCircle className="w-4 h-4" />
-              <span className="tracking-widest uppercase">Have Questions?</span>
-              <HelpCircle className="w-4 h-4" />
+              <HandHeart className="w-4 h-4" />
+              <span className="tracking-widest uppercase">Get Answers</span>
+              <HandHeart className="w-4 h-4" />
             </div>
             <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-8 animate-fade-up" style={{ animationDelay: "0.1s" }}>
               Frequently Asked{" "}
@@ -371,19 +417,25 @@ const Impact = () => {
                 className="group relative animate-fade-up"
                 style={{ animationDelay: `${0.2 + index * 0.1}s` }}
               >
+                {/* Glow Background */}
                 <div className="absolute inset-0 bg-golden/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 scale-105" />
                 
                 <div className="relative flex gap-6 p-6 rounded-2xl bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-xl border border-border/50 hover:border-golden/50 transition-all duration-500 cursor-pointer hover-lift overflow-hidden">
+                  {/* Shimmer Effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   
-                  <div className="relative flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-golden via-accent to-golden flex items-center justify-center shadow-xl group-hover:shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                  <div className={`relative flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${faq.gradient} flex items-center justify-center shadow-xl group-hover:shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
                     <faq.icon className="w-7 h-7 text-primary-foreground" />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                   
                   <div className="flex-grow">
-                    <h3 className="font-display text-xl font-bold text-foreground group-hover:text-golden transition-colors duration-300 mb-2">
-                      {faq.question}
-                    </h3>
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-display text-xl font-bold text-foreground group-hover:text-golden transition-colors duration-300">
+                        {faq.question}
+                      </h3>
+                      <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-golden group-hover:translate-x-2 transition-all duration-300" />
+                    </div>
                     <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">
                       {faq.answer}
                     </p>
@@ -395,59 +447,97 @@ const Impact = () => {
         </div>
       </section>
 
-      {/* Ready to Make an Impact CTA - Like Home DonationBanner */}
-      <section className="py-28 lg:py-40 bg-gradient-to-b from-muted/30 via-foreground to-foreground relative overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 left-10 w-[500px] h-[500px] bg-gradient-to-br from-primary/20 to-accent/15 rounded-full blur-[180px] animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-[600px] h-[600px] bg-gradient-to-br from-golden/15 to-primary/10 rounded-full blur-[200px] animate-pulse" style={{ animationDelay: "1s" }}></div>
+      {/* Ready to Make an Impact CTA - Like Home Hero/DonationBanner */}
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+        {/* Background with Multi-layer Gradient - Like Home Hero */}
+        <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-foreground to-foreground" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-accent/15" />
+        
+        {/* Animated Mesh Gradient */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-primary/40 via-transparent to-transparent animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-golden/30 via-transparent to-transparent animate-pulse" style={{ animationDelay: "1.5s" }} />
         </div>
+        
+        {/* Animated Glow Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary/30 to-accent/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-l from-golden/30 to-primary/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: "1s" }} />
 
         {/* Floating Stars */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <Star className="absolute top-20 left-[15%] w-8 h-8 text-golden/30 floating-slow" />
-          <Sparkles className="absolute top-1/3 right-[12%] w-7 h-7 text-primary/25 floating" />
+          <Sparkles className="absolute top-1/3 right-[12%] w-7 h-7 text-primary-foreground/25 floating" />
           <Star className="absolute bottom-1/4 left-[10%] w-6 h-6 text-accent/30 floating-fast" />
           <Star className="absolute bottom-1/3 right-[20%] w-5 h-5 text-golden/25 floating" />
+          <Zap className="absolute top-[40%] left-[8%] w-5 h-5 text-primary-foreground/20 floating-slow" />
         </div>
+
+        {/* Floating Decorative Elements */}
+        <div className="absolute top-20 left-10 w-24 h-24 border-2 border-primary-foreground/10 rounded-full floating-slow backdrop-blur-sm" />
+        <div className="absolute bottom-32 right-16 w-16 h-16 bg-gradient-to-br from-golden/20 to-accent/10 rounded-full floating blur-sm" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-gradient-to-r from-primary/20 via-accent/10 to-primary/20 text-primary-foreground text-sm font-bold mb-6 animate-fade-up border border-primary-foreground/20">
-              <Sparkles className="w-4 h-4 text-golden" />
-              <span className="tracking-widest uppercase">Get Started Today</span>
-              <Sparkles className="w-4 h-4 text-golden" />
+            {/* Animated Badge */}
+            <div className="inline-flex items-center gap-3 px-8 py-3 rounded-full glass-card mb-8 animate-fade-up border border-primary-foreground/20 shadow-2xl">
+              <Sparkles className="w-5 h-5 text-golden animate-pulse" />
+              <span className="text-sm font-bold tracking-[0.2em] uppercase bg-gradient-to-r from-golden via-primary-foreground to-golden bg-clip-text text-transparent">
+                Get Started Today
+              </span>
+              <Sparkles className="w-5 h-5 text-golden animate-pulse" />
             </div>
             
-            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-primary-foreground mb-8 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-              Ready to Make an{" "}
-              <span className="bg-gradient-to-r from-golden via-primary to-accent bg-clip-text text-transparent">Impact?</span>
+            <h2 
+              className="font-display text-5xl md:text-6xl lg:text-8xl font-black text-primary-foreground mb-8 animate-fade-up tracking-tight" 
+              style={{ animationDelay: "0.1s" }}
+            >
+              <span className="block text-shadow-hero drop-shadow-2xl">READY TO MAKE AN</span>
+              <span className="block bg-gradient-to-r from-golden via-accent to-primary bg-clip-text text-transparent animate-gradient-x">
+                IMPACT?
+              </span>
             </h2>
             
-            <p className="text-xl text-primary-foreground/80 mb-10 leading-relaxed animate-fade-up" style={{ animationDelay: "0.2s" }}>
+            <p 
+              className="text-xl text-primary-foreground/80 mb-12 leading-relaxed animate-fade-up max-w-2xl mx-auto" 
+              style={{ animationDelay: "0.2s" }}
+            >
               Start an RDP pilot for your community today — free consultation and cost analysis included.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+            <div 
+              className="flex flex-wrap items-center justify-center gap-4 animate-fade-up" 
+              style={{ animationDelay: "0.3s" }}
+            >
               <Link to="/contact-us">
                 <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-primary via-accent to-golden text-primary-foreground shadow-glow-md hover:shadow-glow-lg transition-all duration-500 group px-8 text-lg"
+                  variant="hero"
+                  size="xl" 
+                  className="group relative overflow-hidden btn-ripple glow-primary shadow-2xl text-lg px-10 bg-gradient-to-r from-primary via-accent to-golden"
                 >
-                  <Zap className="mr-2 w-5 h-5" />
-                  Book a Pilot
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span className="relative z-10 flex items-center gap-3">
+                    <Zap className="w-5 h-5" />
+                    Book a Pilot
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+                  </span>
                 </Button>
               </Link>
               
               <Link to="/contact-us">
-                <Button size="lg" variant="heroOutline" className="border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 backdrop-blur-sm transition-all duration-300 px-8">
+                <Button 
+                  variant="heroOutline" 
+                  size="xl"
+                  className="group backdrop-blur-md hover:backdrop-blur-lg transition-all duration-500 border-2 shadow-xl text-lg px-10"
+                >
                   Contact Us
                 </Button>
               </Link>
               
               <Link to="/server">
-                <Button size="lg" variant="heroOutline" className="border-2 border-golden/50 text-golden hover:bg-golden/10 backdrop-blur-sm transition-all duration-300 px-8">
+                <Button 
+                  variant="heroOutline" 
+                  size="xl"
+                  className="group backdrop-blur-md hover:backdrop-blur-lg transition-all duration-500 border-2 border-golden/50 text-golden hover:bg-golden/10 shadow-xl text-lg px-10"
+                >
                   Request a Demo
                 </Button>
               </Link>
