@@ -116,10 +116,12 @@ const ServerSouthAmerica = () => {
 
           <div className="max-w-2xl mx-auto mb-16">
             {locations.map((location, index) => (
-              <div 
-                key={index}
-                className="group relative p-12 rounded-3xl bg-gradient-to-br from-card via-card/80 to-background border border-border/50 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-secondary/20 overflow-hidden"
-              >
+  <Link
+    key={index}
+    to="/server-info"
+    className="group relative block p-12 rounded-3xl bg-gradient-to-br from-card via-card/80 to-background border border-border/50 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-secondary/20 overflow-hidden"
+  >
+
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <div className="relative z-10 text-center">
@@ -139,7 +141,7 @@ const ServerSouthAmerica = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+               </Link>
             ))}
           </div>
 
